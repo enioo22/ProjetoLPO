@@ -2,14 +2,19 @@ package projetoLPO;
 import java.util.Scanner;
 
 public class Partida {
-	private Jogador jogador1 = new Jogador();
-	private Jogador jogador2 = new Jogador();
+	private static Jogador[] jogador = new Jogador[2];
 	private static Tabuleiro tabuleiro = new Tabuleiro();
-	private char vez;
+	static char jogadorAtual = 1;
 	
+	public static void inicializarJogadores() {
+		jogador[0].chamarNome();
+		jogador[1].chamarNome();
+	}
 	
 	public static void fazerJogada() {
 		Scanner scan = new Scanner(System.in);
+		System.out.println("Jogador da Vez: " + jogadorAtual);
+	
 		System.out.println("X da primeira peça: ");
 		int x1 = scan.nextInt();
 		System.out.println("Y da primeira peça: ");
@@ -18,7 +23,10 @@ public class Partida {
 		int x2 = scan.nextInt();
 		System.out.println("Y da segunda peça: ");
 		int y2 = scan.nextInt();
-		Tabuleiro.fazerJogada(x1, y1, x2, y2);
+		if(Tabuleiro.fazerJogada(x1, y1, x2, y2) == false && jogadorAtual == 1) jogadorAtual = 2;
+		else if(Tabuleiro.fazerJogada(x1, y1, x2, y2) == false && jogadorAtual == 2) jogadorAtual = 1;
+		//else jogador[jogadorAtual-1	].fezPonto();
+		System.out.println("jogador " + jogadorAtual + " fez a jogada " + x1 + " e " + y1 + "e depois a proxima jogada " + x2 + " e " + y2);
 		
 	}
 }
