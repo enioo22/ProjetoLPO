@@ -1,14 +1,16 @@
 package projetoLPO;
 
-public class Tabuleiro {
-	 private static int[][] tabuleiro = new int[4][4];
 
-	    public static boolean fazerJogada(int x1, int y1, int x2, int y2) {
-	    	if(tabuleiro[x1][y1] == tabuleiro[x2][y2]) {
-	    			return true;
-	    	}
-	    	else return false;
-	    }
-	    
-
+public class main {
+	public static void main(String[] args){
+		
+		Partida partida = new Partida();
+		partida.inicializarJogadores();
+		for(int i = 0; i<20; i++) {
+			partida.fazerJogada();
+		}
+	}
+	
+		
+	
 }
