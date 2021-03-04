@@ -2,14 +2,13 @@ package projetoLPO;
 import java.util.Scanner;
 
 public class Jogador {
-    String nome = "flemis";
-    char pontuacao = 0;
+    private String nome = "flemis";
+    private char pontuacao = 0;
 
-    public String chamarNome() {
+    public void chamarNome() {
         Scanner entrada = new Scanner(System.in);
         System.out.println("Informe o nome do Jogador");
-        nome = entrada.nextLine();
-        return nome;
+        this.nome = entrada.nextLine();
     }
     
     public void fezPonto() {
