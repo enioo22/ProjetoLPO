@@ -7,34 +7,35 @@ public class Partida {
 	jogador[1] = new Jogador();
 	}
 	private static Tabuleiro tabuleiro = new Tabuleiro();
-	static char jogadorAtual = 0;
+	private static char jogadorAtual = 0;
 	
-	public static void inicializarJogadores() {
+	public void inicializarJogadores() {
 		jogador[0].chamarNome();
 		jogador[1].chamarNome();
 	}
 	
-	public static void fazerJogada() {
+	public void fazerJogada() {
 		boolean acerto;
 		Scanner scan = new Scanner(System.in);
 		System.out.println("Jogador da Vez: " + jogador[jogadorAtual].nome);
 		
-		System.out.println("X da primeira peÁa: ");
+		System.out.println("X da primeira pe√ßa: ");
 		int x1 = scan.nextInt();
-		System.out.println("Y da primeira peÁa: ");
+		System.out.println("Y da primeira pe√ßa: ");
 		int y1 = scan.nextInt();
-		System.out.println("X da segunda peÁa: ");
+		System.out.println("X da segunda pe√ßa: ");
 		int x2 = scan.nextInt();
-		System.out.println("Y da segunda peÁa: ");
+		System.out.println("Y da segunda pe√ßa: ");
 		int y2 = scan.nextInt();
-		acerto = tabuleiro.fazerJogada(x1, y1, x2, y2);
+		acerto = tabuleiro.fazerJogada(x1, y1, x2, y2); //retorna o resultado da jogada,  true == acerto
 		
 		System.out.println("jogador " + jogador[jogadorAtual].nome + " fez a jogada " + x1 + " e " + y1 + " e depois a proxima jogada " + x2 + " e " + y2);
 		
-		if(acerto == false && jogadorAtual == 0) jogadorAtual = 1;
+		if(acerto == false && jogadorAtual == 0) jogadorAtual = 1; //mudan√ßa de player se errou na jogada
 		else if(acerto == false && jogadorAtual == 1) jogadorAtual = 0;
 		else jogador[jogadorAtual].fezPonto();
 		
 	}
 }
+
 
