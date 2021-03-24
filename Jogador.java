@@ -1,18 +1,28 @@
 package projetoLPO;
-import java.util.Scanner;
 
-public class Jogador {
-    String nome;
-    private char pontuacao = 0;
-
-    public void chamarNome() {
-        Scanner entrada = new Scanner(System.in);
-        System.out.println("Informe o nome do Jogador");
-        this.nome = entrada.nextLine();
-        
+public class Jogador extends Pessoa{
+    private char score = 0;
+    private int numero;
+    
+    public Jogador(String nome, int numero) {
+    	super(nome);
+    	this.numero = numero;
+    }
+    
+    public String toString() {
+    	return numero + " - O nome do jogador é " + getNome();
     }
     
     public void fezPonto() {
-    	this.pontuacao++;
+    	this.score++;
     }
+
+	public int getScore() {
+		return score;
+	}
+
+	public void setScore(char score) {
+		this.score = score;
+	}
+    
 }
