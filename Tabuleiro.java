@@ -21,7 +21,7 @@ public class Tabuleiro {
 		int contador = -1;
 		
 		String[][] pecas = new String[numeroDeLinhas][numeroDeLinhas];
-		for(int i = 0; i < numeroDeLinhas; i++) { // gerando as peças
+		for(int i = 0; i < numeroDeLinhas; i++) { // gerando as peÃ§as
 			for(int o = 0; o < numeroDeLinhas; o++) {
 				if(i < (numeroDeLinhas/2)) {
 					 contador++;
@@ -56,14 +56,24 @@ public class Tabuleiro {
 			
 		}
 		
-		for(int i = 0; i < numeroDeLinhas; i++) { //embaralhar as peças aleatoriamente
+		for(int i = 0; i < numeroDeLinhas; i++) { //embaralhar as peÃ§as aleatoriamente
 			Collections.shuffle(Arrays.asList(pecas[i]));
 		}
 		Collections.shuffle(Arrays.asList(pecas));
 		
 	}
-
+	
+	public boolean continuarPartida() {
 		
+		for(int i = 0; i<pecas.length; i++) {
+			for( int o = 0; o <pecas.length; o++) {
+				if(pecas[i][o].equalsIgnoreCase(tabuleiro[i][o]) == false ) { // se alguma peca no array tabuleiro nÃ£o estiver solucionada a partida continua
+					return true;
+				}
+			}
+		}
+		return false;
+	}
 	
 	 
 	public String getPeca(int x, int y) {
@@ -73,6 +83,11 @@ public class Tabuleiro {
 		System.out.println(tabuleiro[0][0]);
 		return tabuleiro;
 	}
+	
+	public String getPecaTabuleiro(int x,int y) {
+		return tabuleiro[x][y];
+	}
+	 
  
     public boolean fazerJogada(int x1, int y1, int x2, int y2) {
     	boolean acerto = pecas[x1][y1].equals(pecas[x2][y2]);
